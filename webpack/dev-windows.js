@@ -9,7 +9,8 @@ module.exports = merge(common, {
         https: true,
         hot: true,
         contentBase: path.resolve('static'),
-        historyApiFallback: true
+        historyApiFallback: true,
+        compress: true
     },
     devtool: 'eval-source-map',
     plugins: [
