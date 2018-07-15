@@ -1,6 +1,8 @@
 # hyperhtml-typescript-material-pwa
 HyperHTML, web component, typescript, material, pwa series
 
+*Note: Webpack is not required for much of what we're doing here but it is far easier to pull webpack out than to ignore it till the end.  Thus its included as a foundational step in this walkthru.*
+
 ## Initial Devlopment Dependencies Webpack
 Starting with a relatively simple but complete webpack based development environment.
 
@@ -75,5 +77,7 @@ https://webpack.js.org/configuration/dev-server/
 
 Passing via command line in ```package.json```
 ```    
-"develop-windows": "webpack-dev-server --config ./webpack/dev-windows.js --pfx=./dev-only-certs/localhost.pfx --pfx-passphrase=LocalhostPass",
+"dev-windows": "webpack-dev-server --config ./webpack/dev-windows.js --pfx=./dev-only-certs/localhost.pfx --pfx-passphrase=LocalhostPass",
 ```
+
+
