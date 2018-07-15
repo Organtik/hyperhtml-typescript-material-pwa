@@ -4,7 +4,7 @@
   "description": "HyperHTML, web component, typescript, material, pwa series",
   "main": "index.js",
   "scripts": {
-    "develop": "webpack-dev-server --config ./webpack/dev.js",
+    "develop-windows": "webpack-dev-server --config ./webpack/dev-windows.js --pfx=./dev-only-certs/localhost.pfx --pfx-passphrase=LocalhostPass",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

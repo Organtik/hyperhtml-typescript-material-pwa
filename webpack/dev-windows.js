@@ -6,6 +6,7 @@ const path = require('path');
 module.exports = merge(common, {
     mode: 'development',
     devServer: {
+        https: true,
         hot: true,
         contentBase: path.resolve('static'),
         historyApiFallback: true
