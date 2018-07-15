@@ -80,4 +80,105 @@ Passing via command line in ```package.json```
 "dev-windows": "webpack-dev-server --config ./webpack/dev-windows.js --pfx=./dev-only-certs/localhost.pfx --pfx-passphrase=LocalhostPass",
 ```
 
+## Transpliers (Typescript & SASS) + Webpack
+Transpiling is another tool in our quiver.  In this walkthru we have Typescript and SASS that allow us to provide structure when we want and enforce a few high level conventions that enable more tools down the line.  Necessary?  Absolutely not. Useful for distributed, faster understanding and less error prone delivery? Absolutely, but they arent without their own pain.
+
+### Typescript
+
+# Typescript - Libraries
+- typescript + tsconfig.json - fundamental
+- tslint + tsconfig.json - linting to assist the development experience
+- awesome-typescript-loader - enable typescript for webpack
+
+#### Typescript & Webpack
+Resolve the extension in ```webpack common.js```
+```
+module.exports = {
+  ...
+  resolve: {
+    extensions: ['.js', '.ts', '.html']
+  },
+```
+
+Add the loader
+```
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /.ts$/,
+        use: ['awesome-typescript-loader']
+      }
+    ]
+  }
+```
+
+#### Declare Typings
+Define file types that you expect to import that Typescript doesnt necessarily recognize such as ```scss```
+```/src/typings.d.ts```
+```
+declare module "*.scss" {
+    const content: any;
+    export default content;
+}
+```
+
+#### Config
+Configure typescript to produce ES2016 compatible javascript with Node styles modules and module resolution.
+```tsconfig.json```
+```
+{
+    "compilerOptions": {
+        "target": "ES2016",
+        "module": "ES2015",
+        "moduleResolution": "Node",
+        "allowSyntheticDefaultImports": true
+    }
+}
+```
+
+#### Linting
+<Coming>
+
+
+### SASS
+There are plenty of tutorials out there for generic SCSS handling however we're going to be focused on web components with shadow dom.  This creates a very different pathway requiring transpiling to a string of css and then importation.
+
+#### Transpile SCSS and Import As String
+Above we've created the typing but with this setup we can now perform the following:
+```
+import * as style from './index.scss'
+```
+This enables it to be embedded within a web component as a variable.  More on this soon.
+
+#### Config
+<Coming soon: inclusion/exclusion>
+
+```
+module.exports = {
+  ...
+  module: {
+    rules: [
+      ...
+      {
+        test: /\.scss$/,
+        use: [
+          'exports-loader?module.exports.toString()',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              includePaths: ['./node_modules']
+            }
+          }
+        ]
+      ...
+```
+
 

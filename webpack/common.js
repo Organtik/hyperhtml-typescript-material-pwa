@@ -22,6 +22,29 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /.ts$/,
+        use: ['awesome-typescript-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'exports-loader?module.exports.toString()',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              includePaths: ['./node_modules']
+            }
+          }
+        ]
+      }
     ]
   }
 }
