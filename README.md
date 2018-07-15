@@ -181,4 +181,16 @@ module.exports = {
       ...
 ```
 
+## Progressive Web App
+Aspects of Prorgessive Web Apps are beneficial even if not implementing a full implementation.  For full implementations the most fully functional set of libraries is provided as part of [Workbox](https://developers.google.com/web/tools/workbox/)
 
+### Manifest.json
+Theme/background/icons, android temp splash screen
+
+### Service Worker
+Temporary empty static js placeholder
+
+### Index.html updates
+Viewport
+Backup images
+Service Worker
