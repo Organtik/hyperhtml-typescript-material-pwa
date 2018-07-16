@@ -194,3 +194,19 @@ Temporary empty static js placeholder
 Viewport
 Backup images
 Service Worker
+
+## Webcomponents and HyperHtml
+Time to get to get more opinionated in both technology and mindset.  WebComponents have been around since 2011, enabling or extending HTML tags to encapsulate html, css and javascript in `reusable` modules/widgets.
+
+Hyperhtml is a library that performs much of what what ReactJS was able to do but without a virtual dom and while also being DOM and ECMAScript compliant (ie no need for another language to learn and other toolsets).  This is possible due to template literals and the brilliance of its author [Andrea Giammarchi](https://twitter.com/WebReflection).  On a fun note, this library is updated faster when browsers change and break the functionality than both react and polymer, so no one can say its "not supported".
+
+Now for the quick cons:
+- Webcomponents despite all their promise have yet to be fully adopted by browers but we have polyfills.
+- Fundamental aspects of every program ever is input, output and the logic inbetween.  Webcomponents have forgotten this (for valid reasons due to existing specifications/conforming/etc).  Closest you'll ever get to native handling of input and output are attributes and events.  No real standard or convention we can count on.  Thus, the rise of frameworks such as Polymer which made inputs and outputs first class citizens.  (P.S. Polymer is dead as stated by the authors themselves, lit-html/LitElement are the future).  Yet hyperhtml is more complete, more compatible, faster and if only the community would agree, we'd likely have a standard of communication to work with.
+- Hyperhtml has a relatively small group of elite developers supporting it.  Real world examples, compatibility, etc is extremely sparse.  Expect questions to be answered by a top 1% developer and only understandable by the top 5%, just take a look at the issues/feedback/articles etc and you'll see what I mean ;)
+
+So welcome to the focus of this walkthrough:
+`Demonstrate hyperhtml via web components, import modern design metaphors such as material io with relatively native handling of communication and services.`
+
+### Shadow Dom Shell
+```<organtik-app>``` is the shell component and foundation.
