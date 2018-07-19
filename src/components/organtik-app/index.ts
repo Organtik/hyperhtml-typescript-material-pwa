@@ -10,6 +10,8 @@ export class OrgantikApp extends HyperHTMLElement {
     render() {
         this.html`
             <hyper-button>Here we go!</hyper-button>
+            <hyper-button disabled>Disabled</hyper-button>
+            <hyper-button raised>Raised</hyper-button>
         `;
     }
 }

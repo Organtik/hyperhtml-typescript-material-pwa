@@ -254,3 +254,20 @@ Description coming, committing asap as requested.
 
 ### External Html
 
+### Attribute handling
+There exist plenty of tutorials out there on web components and attribute handling such as [Ayush Gupta](https://twitter.com/ayushgp)'s [HTML Web Component using Vanilla JS series](https://ayushgp.github.io/html-web-components-using-vanilla-js-part-3/).  With HyperHTMLElement a lot of the boiler plate is done for us and the reasons behind various aspects may be found at
+https://github.com/WebReflection/hyperHTML-Element/blob/master/typescript.md
+and
+https://github.com/WebReflection/hyperHTML-Element/blob/master/README.md
+
+### (not)Partial Attributes
+documentation to add Partial attributes are not supported in hyperhtml so for example
+```
+class="stuff ${stuff}"
+``` will break.  
+```
+        <button class=${'mdc-button ' + `${mdcClasses}`} disabled=${this.state.disabled}>
+            <slot></slot>
+        </button>
+```
+Concatentation inside of the template literal allows us to keep performance up, more details can be found at https://viperhtml.js.org/hyperhtml/documentation/#essentials-7
