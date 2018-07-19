@@ -210,3 +210,37 @@ So welcome to the focus of this walkthrough:
 
 ### Shadow Dom Shell
 ```<organtik-app>``` is the shell component and foundation.
+
+
+## Index Cache
+Browser cache isn't difficult to deal with but unless you do it up front, you're setting yourself up for pain.  This is particularly true for our primary entrypoint index.html.  If you don't introduce changes rapidly consider altering expirations.
+
+### Index.html
+Page level controls are supported in different ways by different browsers.  The best you're going to get is adding the following to the header.
+
+	```
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate, post-check=0, pre-check=0">
+	<meta http-equiv="Pragma" content="no-cache">
+  ```
+
+
+### Index Server Headers/Response
+Response headers are supported far better across browsers than page level metadata.
+```
+<add name="Cache-Control" value="no-cache, no-store, must-revalidate" />
+<add name="Pragma" value="no-cache" />
+<add name="Expires" value="-1" />
+```
+
+### Advanced goodness
+There is a very specific specification that will force a reload without cache https://developer.mozilla.org/en-US/docs/Web/API/Location/reload 
+```
+object.reload(forcedReload);
+```
+
+For example:
+```
+window.location.reload(true)
+```
+
+This technique is handy if you cannot control the response header such as a CDN that you have limited control of and you can very precisely manage the lifecycle of the page.
