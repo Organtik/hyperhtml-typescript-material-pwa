@@ -244,3 +244,13 @@ window.location.reload(true)
 ```
 
 This technique is handy if you cannot control the response header such as a CDN that you have limited control of and you can very precisely manage the lifecycle of the page.
+
+## Simple Material Design Button
+Description coming, committing asap as requested.
+
+### Material Button
+
+### SCSS Injection
+
+### External Html
+

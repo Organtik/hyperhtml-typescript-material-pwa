@@ -1,12 +1,16 @@
 import HyperHTMLElement from 'hyperhtml-element/esm';
 
+import { HyperButton } from '../hyper-button'; 
+
 export class OrgantikApp extends HyperHTMLElement {
     created() {
         this.attachShadow({ mode: 'open' });
         this.render();
     }
     render() {
-        this.html`Here we go!`;
+        this.html`
+            <hyper-button>Here we go!</hyper-button>
+        `;
     }
 }
 
