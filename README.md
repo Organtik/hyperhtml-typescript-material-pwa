@@ -32,6 +32,21 @@ Helpful Extensions
 - Literally-html - Template string syntax highlighting for Typescript/Javascript.
 - ESLint - linter support
 
+#### Warning: Formatting
+VSCode is still being updated to handel template literals.  Literally-html is handy but understand that it will mess with your code in breaking ways.  For example if you embed in a slot something like
+```
+<hey>${stuff}</hey>
+```
+current formatting will cause things like 
+```
+<hey>
+$ {
+  stuff
+}
+</hey>
+```
+Which absolutely will not be recognized or work in template literals.
+
 #### Debugger for Chrome Configuration
 Visual studio + Chrome Debugging's source map defaults do not include src.  Without the below or a change in structure you will encounter source map debugging offset issues.
 ```
@@ -261,13 +276,17 @@ and
 https://github.com/WebReflection/hyperHTML-Element/blob/master/README.md
 
 ### (not)Partial Attributes
-documentation to add Partial attributes are not supported in hyperhtml so for example
+Partial attributes are not supported in hyperhtml so for example
 ```
 class="stuff ${stuff}"
-``` will break.  
+```
+will break.  
 ```
         <button class=${'mdc-button ' + `${mdcClasses}`} disabled=${this.state.disabled}>
             <slot></slot>
         </button>
 ```
 Concatentation inside of the template literal allows us to keep performance up, more details can be found at https://viperhtml.js.org/hyperhtml/documentation/#essentials-7
+
+### Initial Attribute Values vs State vs Render
+todo
