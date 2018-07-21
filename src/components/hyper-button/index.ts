@@ -1,5 +1,6 @@
 import HyperHTMLElement from 'hyperhtml-element/esm';
 import * as style from './index.scss'
+import {MDCRipple} from '@material/ripple';
 
 interface HyperButtonState {
     dense: boolean;
@@ -58,6 +59,8 @@ export class HyperButton extends HyperHTMLElement<HyperButtonState> {
     created() {
         this.attachShadow({ mode: 'open', delegatesFocus: true });
         this.render();
+        const applyRippleTo = this.shadowRoot.querySelector('.mdc-button');
+        MDCRipple.attachTo(applyRippleTo);
     }
 
     classString(classInfo: { [name: string]: string | boolean | number }) {
@@ -80,10 +83,11 @@ export class HyperButton extends HyperHTMLElement<HyperButtonState> {
                 'mdc-button--unelevated': this.state.unelevated
             }
         );
+        const externalStyle = this.externalStyle();
 
         this.html`
         <style>
-            ${this.externalStyle()}
+            ${externalStyle}
         </style>
         <button class=${ 'mdc-button ' + `${mdcClasses}`} disabled=${this.state.disabled}>
             ${this.state.label}

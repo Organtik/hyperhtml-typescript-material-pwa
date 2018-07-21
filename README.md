@@ -290,3 +290,6 @@ Concatentation inside of the template literal allows us to keep performance up, 
 
 ### Initial Attribute Values vs State vs Render
 todo
+
+### Ripples!
+todo

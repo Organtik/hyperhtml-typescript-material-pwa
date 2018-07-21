@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@material/button": "^0.37.1",
+    "@material/ripple": "^0.37.1",
     "hyperhtml": "^2.11.2",
     "hyperhtml-element": "^2.0.2"
   }
