@@ -86,10 +86,12 @@ export class HyperButton extends HyperHTMLElement<HyperButtonState> {
         const externalStyle = this.externalStyle();
 
         this.html`
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <style>
             ${externalStyle}
         </style>
         <button class=${ 'mdc-button ' + `${mdcClasses}`} disabled=${this.state.disabled}>
+            ${this.state.icon ? this.html`'<i class="material-icons mdc-button__icon">${this.state.icon}</i>` : ''}
             ${this.state.label}
             <slot></slot>
         </button>

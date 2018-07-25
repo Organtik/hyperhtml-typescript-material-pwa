@@ -15,7 +15,8 @@ export class OrgantikApp extends HyperHTMLElement {
             <hyper-button dense>Dense</hyper-button>
             <hyper-button outlined>Outlined</hyper-button>
             <hyper-button unelevated>Unelevated</hyper-button>
-            <hyper-button label="labeled"></hyper-button
+            <hyper-button label="labeled"></hyper-button>
+            <hyper-button icon="favorite">Favorite</hyper-button>
         `;
     }
 }
