@@ -293,3 +293,8 @@ todo
 
 ### Ripples!
 todo
+
+### External Styles and Shadow Dom
+todo
+```<link>```
+is supported!  ```@import``` is bad new bears.
