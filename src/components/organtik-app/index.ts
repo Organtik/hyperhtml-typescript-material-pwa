@@ -1,6 +1,6 @@
 import HyperHTMLElement from 'hyperhtml-element/esm';
 
-import { HyperButton } from '../hyper-button'; 
+import { HyperButton } from '../hyper-button';
 
 export class OrgantikApp extends HyperHTMLElement {
     created() {
@@ -9,6 +9,20 @@ export class OrgantikApp extends HyperHTMLElement {
     }
     render() {
         this.html`
+            <style>
+                .app-fab--absolute {
+                    position: fixed;
+                    bottom: 1rem;
+                    right: 1rem;
+                }
+            
+                @media(min-width: 1024px) {
+                    .app-fab--absolute {
+                        bottom: 1.5rem;
+                        right: 1.5rem;
+                    }
+                }
+            </style>
             <hyper-button>Here we go!</hyper-button>
             <hyper-button disabled>Disabled</hyper-button>
             <hyper-button raised>Raised</hyper-button>
@@ -17,7 +31,7 @@ export class OrgantikApp extends HyperHTMLElement {
             <hyper-button unelevated>Unelevated</hyper-button>
             <hyper-button label="labeled"></hyper-button>
             <hyper-button icon="favorite">Favorite</hyper-button>
-            <hyper-fab icon="favorite"></hyper-fab>
+            <hyper-fab class="app-fab--absolute" icon="favorite"></hyper-fab>
         `;
     }
 }
