@@ -59,8 +59,8 @@ export class HyperButton extends HyperHTMLElement<HyperButtonState> {
     created() {
         this.attachShadow({ mode: 'open', delegatesFocus: true });
         this.render();
-        const applyRippleTo = this.shadowRoot.querySelector('.mdc-button');
-        MDCRipple.attachTo(applyRippleTo);
+        // const applyRippleTo = this.shadowRoot.querySelector('.mdc-button');
+        // MDCRipple.attachTo(applyRippleTo);
     }
 
     classString(classInfo: { [name: string]: string | boolean | number }) {

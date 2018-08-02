@@ -298,3 +298,15 @@ todo
 todo
 ```<link>```
 is supported!  ```@import``` is bad new bears.
+
+## Events, State Management (and more) and Authentication
+As you know a web site/application quickly elevates in complexity once interaction, authentication, etc. come into play.  There are a multitude of ways to handle events, interaction, state and the services that often power them.  There are however better practices than others.
+
+### Authentication & Shadow DOM
+Certain events are automatically propogated through the shadow dom and are composed in a way that makes it appear that the web component initiated the event.  For example
+```
+<hyper-button onclick=${this.handleLoginClick} raised>Login</hyper-button>
+```
+As way of immediate example, adding Firebase authentication to Login and Logout buttons.  This is would never work for real applications and you'll also get flickering based on the state of the app but as way of quick example...
+
+
