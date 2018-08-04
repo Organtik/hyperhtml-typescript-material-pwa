@@ -5,19 +5,27 @@ import { HyperButton } from '../hyper-button';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-export class OrgantikApp extends HyperHTMLElement {
-    firebaseApp?: firebase.app.App;
+interface OrgantikAppState {
+    user: firebase.User;
+}
+
+export class OrgantikApp extends HyperHTMLElement<OrgantikAppState> {
+    firebaseApp: firebase.app.App;
+    googleAuthProvider: firebase.auth.GoogleAuthProvider;
+
+    get defaultState() {
+        return {
+            user: null
+        };
+    }
+
 
     handleLoginClick(e) {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        let auth: firebase.auth.Auth = firebase.auth();
-        auth.useDeviceLanguage();
-        auth.signInWithRedirect(provider);
+        this.firebaseApp.auth().signInWithRedirect(this.googleAuthProvider);
     }
+
     handleLogoutClick(e) {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        let auth: firebase.auth.Auth = firebase.auth();
-        auth.signOut();
+        this.firebaseApp.auth().signOut();
     }
 
     created() {
@@ -29,6 +37,17 @@ export class OrgantikApp extends HyperHTMLElement {
             projectId: "hyperhtml-ts-material-pwa"
         };
         this.firebaseApp = firebase.initializeApp(config);
+        const auth = this.firebaseApp.auth();
+        auth.onAuthStateChanged((user) => {
+            this.setState({
+                user: user
+            })
+        });
+        auth.useDeviceLanguage();
+        this.googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+        this.googleAuthProvider.setCustomParameters({
+            prompt: 'select_account'
+        });
 
         this.render();
     }
@@ -48,10 +67,12 @@ export class OrgantikApp extends HyperHTMLElement {
                     }
                 }
             </style>
+            ${this.state.user ? 
+                this.html`<hyper-button onclick=${this.handleLogoutClick} raised>Logout</hyper-button>`
+                : this.html`<hyper-button onclick=${this.handleLoginClick} raised>Login</hyper-button>` }
+
             <hyper-button>Here we go!</hyper-button>
             <hyper-button disabled>Disabled</hyper-button>
-            <hyper-button onclick=${this.handleLoginClick} raised>Login</hyper-button>
-            <hyper-button onclick=${this.handleLogoutClick} raised>Logout</hyper-button>
             <hyper-button dense>Dense</hyper-button>
             <hyper-button outlined>Outlined</hyper-button>
             <hyper-button unelevated>Unelevated</hyper-button>
