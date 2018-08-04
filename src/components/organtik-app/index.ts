@@ -39,9 +39,10 @@ export class OrgantikApp extends HyperHTMLElement<OrgantikAppState> {
         this.firebaseApp = firebase.initializeApp(config);
         const auth = this.firebaseApp.auth();
         auth.onAuthStateChanged((user) => {
-            this.setState({
-                user: user
-            })
+            this.setState({user: user})
+        }, (error) => {
+            this.setState({});
+            console.error(`${error.code}: ${error.message}`);
         });
         auth.useDeviceLanguage();
         this.googleAuthProvider = new firebase.auth.GoogleAuthProvider();
