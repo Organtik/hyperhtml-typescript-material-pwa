@@ -19,7 +19,6 @@ export class OrgantikApp extends HyperHTMLElement<OrgantikAppState> {
         };
     }
 
-
     handleLoginClick(e) {
         this.firebaseApp.auth().signInWithRedirect(this.googleAuthProvider);
     }
