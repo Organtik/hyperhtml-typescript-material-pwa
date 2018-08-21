@@ -2,12 +2,16 @@ import HyperHTMLElement from 'hyperhtml-element/esm';
 import * as style from './index.scss'
 import { MDCRipple } from '@material/ripple';
 
-interface HyperFabState {
+class HyperFabState {
     disabled: boolean;
     exited: boolean;
     icon: string;
     label: string;
     mini: boolean;
+
+    public constructor(init?:Partial<HyperFabState>) {
+        Object.assign(this, init);
+    }
 }
 
 export class HyperFab extends HyperHTMLElement<HyperFabState> {
@@ -18,13 +22,13 @@ export class HyperFab extends HyperHTMLElement<HyperFabState> {
     mini?: boolean;
 
     get defaultState() {
-        return {
+        return new HyperFabState({
             disabled: this.disabled != null,
             exited: this.exited != null,
             icon: this.icon || '',
             label: this.label || '',
             mini: this.mini != null
-        };
+        });
     }
 
     static get observedAttributes() {

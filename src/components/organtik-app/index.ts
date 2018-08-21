@@ -5,18 +5,24 @@ import { HyperButton } from '../hyper-button';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-interface OrgantikAppState {
-    user: firebase.User;
+class OrgantikAppState {
+    user: firebase.User = null;
+
+    public constructor(init?:Partial<OrgantikAppState>) {
+        Object.assign(this, init);
+    }
 }
+
+// interface OrgantikAppState {
+//     user: firebase.User;
+// }
 
 export class OrgantikApp extends HyperHTMLElement<OrgantikAppState> {
     firebaseApp: firebase.app.App;
     googleAuthProvider: firebase.auth.GoogleAuthProvider;
 
     get defaultState() {
-        return {
-            user: null
-        };
+        return new OrgantikAppState();
     }
 
     handleLoginClick(e) {

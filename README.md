@@ -311,12 +311,16 @@ As way of immediate example, adding Firebase authentication to Login and Logout 
 
 We've added basic Firebase authentication event handling and state change.
 
+### Typescript Advancements
+Debated where to put this.  As seen in the Web Component / Hyper attributes, there is an interface, there is a default state and there are nullables in the typescript definition for the attributes.  Each have their reasons but this is a lot of boilerplate without much advantange, no?
+
+#### Typescript Partials & Mapped Types
+First, let's address the idea of default state without having to reinvent the wheel.  Until now Typescript has only gotten in the way outside of enforcing a bit of syntax that a linter can mitigate (unless its compromised, p.s. https://eslint.org/blog/2018/07/postmortem-for-malicious-package-publishes ).
+
+Enter typescript Partials & Mapped Types
+
 
 #### Enter the opinions, take it as you will: States, transitions & streams 
-I personally come from a high scale application background including web apps, services, data access, workflows and persistence stores. This is what attracted me to hyperhtml.  Bare bones yet amazingly performant and functional.  However there is a pattern out there that is anathema to delivery at scale: a global state machine.  Frameworks that have recently gained popularity, tend to leverage global and local state machines along with attempting to make state mutations predictable through restrictions.  One such container is Redux.  It is an absolutely valid pattern and has helped many.  Plenty of tutorials exist out there that demonstrate it along with its various flavors.
 
-I however know that applications at scale rarely if ever maintain a global state let alone a global state manager.  The reasons are multiple but simply, to handle states and transitions becomes exponentially more difficult to maintain, complex scenarios begin to necessitate breaking of the patterns you were trying to enforce and even more complexities are introduced the moment multithreading comes into play.  Thus my preference for stream processing at the global level and keep state simple at the local level.
-
-My preferred method of handling this same problem is Reactive programming, in particular RxJS.  Before you go, "THATS NOT SIMPLER OR BETTER!, I'VE USED IT!", know that I dont mean the bastardized version and terrible patterns AngularJS introduced years ago.  I mean true to intent, unbounded stream processing, subscriptions, mapping, and hot and cold values that handle and inform the local state.  In my version of reality, named streams are what live in the wider context, performing the mapping, providing subscriptions, and maintaining hot, cold and even replayable streams.  The logic of a function stays in the local function or respective service.  While this reduces a massive amount of boilerplate code along with making code more readable, there is a tradeoff.  If you want to reflect states that are really transitions such as a loading, you need to model it.  This is a valid use case and should weigh into your decisions.
 
 

@@ -2,7 +2,7 @@ import HyperHTMLElement from 'hyperhtml-element/esm';
 import * as style from './index.scss'
 import {MDCRipple} from '@material/ripple';
 
-interface HyperButtonState {
+class HyperButtonState {
     dense: boolean;
     disabled: boolean;
     icon: string;
@@ -10,6 +10,10 @@ interface HyperButtonState {
     outlined: boolean;
     raised: boolean;
     unelevated: boolean;
+
+    public constructor(init?:Partial<HyperButtonState>) {
+        Object.assign(this, init);
+    }
 }
 
 export class HyperButton extends HyperHTMLElement<HyperButtonState> {
@@ -26,7 +30,7 @@ export class HyperButton extends HyperHTMLElement<HyperButtonState> {
     }
 
     get defaultState() {
-        return {
+        return new HyperButtonState({
             dense: this.dense != null,
             disabled: this.disabled != null,
             icon: this.icon || '',
@@ -34,7 +38,7 @@ export class HyperButton extends HyperHTMLElement<HyperButtonState> {
             outlined: this.outlined != null,
             raised: this.raised != null,
             unelevated: this.unelevated != null
-        };
+        });
     }
 
     attributeChangedCallback(attrName: string, prev: string, curr: string) {
