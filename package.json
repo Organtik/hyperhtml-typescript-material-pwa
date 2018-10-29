@@ -40,7 +40,7 @@
     "@material/ripple": "^0.38.1",
     "firebase": "^5.5.6",
     "hyperhtml": "^2.15.0",
-    "hyperhtml-element": "^2.3.1",
+    "hyperhtml-element": "^3.1.0",
     "rxjs": "^6.3.3"
   }
 }
