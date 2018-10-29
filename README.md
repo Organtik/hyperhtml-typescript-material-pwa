@@ -320,7 +320,8 @@ First, let's address the idea of default state without having to reinvent the wh
 Enter typescript Partials & Mapped Types
 
 
-#### Enter the opinions, take it as you will: States, transitions & streams 
+#### Enter the opinions, take it as you will: States, transitions & streams
 
 
-
+##### The DOM
+A fundamental understanding that must be understood in the current incarnation of HTML DOM is: Children know of their parents yet the parents were forced by the court to give up all rights.  Children can be passed attributes at time of creation.  The state takes over from there.  The parent can only ask for updates after the browser says they are born not when they actually are.  Thus as the parent you can never know when the child is born nor give them any gifts or track them during the interim period. You cannot as a javascript developer know when they are attached, cannot share data, nothing outside of approved channels.  But! you inject or use a framework after the fact.
